@@ -1,11 +1,6 @@
 const formulario = document.getElementById('formulario');
 const nomeInput = document.getElementById('nome-contato');
 const telefoneInput = document.getElementById('telefone-contato');
-
-formulario.addEventListener('submit', function (e) {
-  e.preventDefault();
-});
-
 const regexConfig = {};
 regexConfig.nome = {
   validar: /^[A-Za-z\s]*$/,
@@ -17,6 +12,16 @@ regexConfig.telefone = {
   formato: '($1) $2 $3-$4',
   digitos: 11,
 };
+
+let linhaId = 0;
+
+formulario.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  if (validarInput(nomeInput) && validarInput(telefoneInput)) {
+    adicionarLinha();
+  }
+});
 
 function validarInput(input) {
   const id = input.id.replace('-contato', '');
@@ -35,5 +40,19 @@ function formatarInput(input) {
     regexConfig[id].formato,
   );
 
-  input.value = inputFormatado;
+  return inputFormatado;
+}
+
+function adicionarLinha() {
+  const corpoDaTabela = document.querySelector('tbody');
+
+  const linha = `
+  <tr id="${linhaId}">
+      <td>${nomeInput.value}</td>
+      <td>${formatarInput(telefoneInput)}</td>
+      <td><img src="./img/deletar.svg" alt="Apagar contato"></td>
+  </tr>
+  `;
+  corpoDaTabela.innerHTML += linha;
+  linhaId++;
 }
