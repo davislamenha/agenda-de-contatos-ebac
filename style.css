@@ -30,7 +30,7 @@ header h1 {
   font-size: 42px;
 }
 
-/* ===== HEADER ====== */
+/* ===== FORMULARIO ====== */
 form {
   display: flex;
   gap: 16px;
@@ -59,6 +59,34 @@ form button {
   transition: 0.5s all;
 }
 form button:hover {
+  opacity: 0.8;
+  scale: 1.2;
+}
+
+/* ===== LISTA ====== */
+table {
+  width: 100%;
+}
+table th {
+  border-bottom: 3px solid #595151;
+  padding-block: 12px;
+  color: #403a3a;
+  font-size: 24px;
+}
+table td {
+  border-bottom: 3px solid #a69797;
+  text-align: center;
+  padding-block: 12px;
+  font-size: 18px;
+  color: #403a3a;
+}
+table td > img {
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  transition: 0.5s all;
+}
+table td > img:hover {
   opacity: 0.8;
   scale: 1.2;
 }
