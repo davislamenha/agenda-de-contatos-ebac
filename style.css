@@ -40,6 +40,7 @@ form input {
   border: none;
   border-left: 8px solid #69c04d;
   padding: 5px;
+  color: #595151;
   font-size: 18px;
   border-radius: 5px;
   transition: 0.5s all;
