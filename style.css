@@ -5,3 +5,16 @@
   padding: 0;
   font-family: 'Nunito', sans-serif;
 }
+
+/* ===== HEADER ====== */
+header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+header img {
+  height: 36px;
+}
+header h1 {
+  font-size: 42px;
+}
