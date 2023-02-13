@@ -9,6 +9,7 @@ formulario.addEventListener('submit', function (e) {
 const regexConfig = {};
 regexConfig.nome = {
   validar: /^[A-Za-z\s]*$/,
+  digitos: 30,
 };
 regexConfig.telefone = {
   validar: /^(\(?[0-9]{2}\)?)\s?([9]{1})\s?([0-9]{4})-?([0-9]{4})$/,
@@ -22,4 +23,17 @@ function validarInput(input) {
   const regex = regexConfig[id].validar;
 
   return regex.test(input.value);
+}
+
+function formatarInput(input) {
+  const id = input.id.replace('-contato', '');
+  const inputLimpo = input.value
+    .replace(/\D/g, '')
+    .slice(0, regexConfig[id].digitos);
+  const inputFormatado = inputLimpo.replace(
+    regexConfig[id].formatar,
+    regexConfig[id].formato,
+  );
+
+  input.value = inputFormatado;
 }
