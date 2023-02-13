@@ -1,6 +1,6 @@
 const formulario = document.getElementById('formulario');
 const nomeInput = document.getElementById('nome-contato');
-const numeroInput = document.getElementById('numero-contato');
+const telefoneInput = document.getElementById('telefone-contato');
 
 formulario.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -18,12 +18,8 @@ regexConfig.telefone = {
 };
 
 function validarInput(input) {
-  let regex = '';
-  if (input.id === 'nome-contato') {
-    regex = regexConfig.nome.validar;
-  } else if (input.id === 'numero-contato') {
-    regex = regexConfig.telefone.validar;
-  } else return false;
+  const id = input.id.replace('-contato', '');
+  const regex = regexConfig[id].validar;
 
   return regex.test(input.value);
 }
