@@ -19,7 +19,12 @@ let linhaId = 0;
 formulario.addEventListener('submit', function (e) {
   e.preventDefault();
 
-  if (validarInput(nomeInput) && validarInput(telefoneInput)) {
+  if (
+    validarInput(nomeInput) &&
+    validarInput(telefoneInput) &&
+    !verificarDuplicacao(nomeInput) &&
+    !verificarDuplicacao(telefoneInput)
+  ) {
     adicionarLinha();
     ativarBotaoDel();
   }
@@ -50,8 +55,8 @@ function adicionarLinha() {
 
   const linha = `
   <tr id="${linhaId}">
-      <td>${nomeInput.value}</td>
-      <td>${formatarInput(telefoneInput)}</td>
+      <td class="nome">${nomeInput.value}</td>
+      <td class="telefone">${formatarInput(telefoneInput)}</td>
       <td><button class="deletar" id="del-${linhaId}"><img src="./img/deletar.svg" alt="Apagar contato"></button></td>
   </tr>
   `;
@@ -72,4 +77,19 @@ function ativarBotaoDel() {
       linha.remove();
     });
   });
+}
+
+function verificarDuplicacao(input) {
+  const listaClasse = input.id.replace('-contato', '');
+  const linhas = Array.from(
+    document.querySelectorAll(`tbody tr .${listaClasse}`),
+  );
+  const listaArray = linhas.map((item) => item.innerText);
+  const inputValue =
+    listaClasse === 'telefone' ? formatarInput(input) : input.value;
+
+  if (listaArray.includes(inputValue)) {
+    alert(`Este ${listaClasse} já existe na agenda!`);
+    return true;
+  } else return false;
 }
