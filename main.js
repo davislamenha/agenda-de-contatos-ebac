@@ -57,6 +57,8 @@ function adicionarLinha() {
   `;
   corpoDaTabela.innerHTML += linha;
   linhaId++;
+  nomeInput.value = '';
+  telefoneInput.value = '';
 }
 
 function ativarBotaoDel() {
