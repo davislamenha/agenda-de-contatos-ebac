@@ -66,6 +66,13 @@ form button:hover {
 table {
   width: 100%;
 }
+tbody tr {
+  opacity: 0;
+  transition: 1s ease-in-out;
+}
+tbody tr.ativo {
+  opacity: 1;
+}
 table th {
   border-bottom: 3px solid #595151;
   padding-block: 12px;

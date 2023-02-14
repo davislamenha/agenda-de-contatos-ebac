@@ -61,7 +61,10 @@ function adicionarLinha() {
   </tr>
   `;
   corpoDaTabela.innerHTML += linha;
-  linhaId++;
+  setTimeout(() => {
+    const tr = document.getElementById(linhaId).classList.add('ativo');
+    linhaId++;
+  }, 500);
   nomeInput.value = '';
   telefoneInput.value = '';
 }
@@ -74,7 +77,10 @@ function ativarBotaoDel() {
       e.preventDefault();
       const id = e.currentTarget.id.replace('del-', '');
       const linha = document.getElementById(id);
-      linha.remove();
+      linha.classList.remove('ativo');
+      setTimeout(() => {
+        linha.remove();
+      }, 500);
     });
   });
 }
