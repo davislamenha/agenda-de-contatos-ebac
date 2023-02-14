@@ -57,7 +57,7 @@ function adicionarLinha() {
   <tr id="${linhaId}">
       <td class="nome">${nomeInput.value}</td>
       <td class="telefone">${formatarInput(telefoneInput)}</td>
-      <td><button class="deletar" id="del-${linhaId}"><img src="./img/deletar.svg" alt="Apagar contato"></button></td>
+      <td><button class="deletar" id="del-${linhaId}" title="Apagar contato"><img src="./img/deletar.svg" alt="Apagar contato"></button></td>
   </tr>
   `;
   corpoDaTabela.innerHTML += linha;
