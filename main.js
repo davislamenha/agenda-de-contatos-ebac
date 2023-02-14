@@ -1,6 +1,7 @@
 const formulario = document.getElementById('formulario');
 const nomeInput = document.getElementById('nome-contato');
 const telefoneInput = document.getElementById('telefone-contato');
+
 const regexConfig = {};
 regexConfig.nome = {
   validar: /^[A-Za-z\s]*$/,
@@ -20,6 +21,7 @@ formulario.addEventListener('submit', function (e) {
 
   if (validarInput(nomeInput) && validarInput(telefoneInput)) {
     adicionarLinha();
+    ativarBotaoDel();
   }
 });
 
@@ -50,9 +52,22 @@ function adicionarLinha() {
   <tr id="${linhaId}">
       <td>${nomeInput.value}</td>
       <td>${formatarInput(telefoneInput)}</td>
-      <td><img src="./img/deletar.svg" alt="Apagar contato"></td>
+      <td><button class="deletar" id="del-${linhaId}"><img src="./img/deletar.svg" alt="Apagar contato"></button></td>
   </tr>
   `;
   corpoDaTabela.innerHTML += linha;
   linhaId++;
+}
+
+function ativarBotaoDel() {
+  const botaoDel = document.querySelectorAll('.deletar');
+
+  botaoDel.forEach((botao) => {
+    botao.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = e.currentTarget.id.replace('del-', '');
+      const linha = document.getElementById(id);
+      linha.remove();
+    });
+  });
 }

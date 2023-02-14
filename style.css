@@ -79,13 +79,17 @@ table td {
   font-size: 18px;
   color: #403a3a;
 }
-table td > img {
+table td button {
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
+table td button > img {
   width: 36px;
   height: 36px;
   transition: 0.5s all;
 }
-table td > img:hover {
+table td button:hover > img {
   opacity: 0.8;
   scale: 1.2;
 }
