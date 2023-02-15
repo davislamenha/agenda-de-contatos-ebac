@@ -34,7 +34,12 @@ function validarInput(input) {
   const id = input.id.replace('-contato', '');
   const regex = regexConfig[id].validar;
 
-  return regex.test(input.value);
+  if (regex.test(input.value)) {
+    return true;
+  } else {
+    alert(`O ${id} informado é inválido, por favor preencha corretamente!`);
+    return false;
+  }
 }
 
 function formatarInput(input) {
