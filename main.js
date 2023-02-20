@@ -8,8 +8,8 @@ regexConfig.nome = {
   digitos: 30,
 };
 regexConfig.telefone = {
-  validar: /^(\(?[0-9]{2}\)?)\s?([9]{1})\s?([0-9]{4})-?([0-9]{4})$/,
-  formatar: /(\d{2})([9]{1})(\d{4})(\d{4})/g,
+  validar: /^(\(?[0-9]{2}\)?)\s?([9]{1})?\s?([0-9]{4})-?([0-9]{4})$/,
+  formatar: /(\d{2})([9]{1})?(\d{4})(\d{4})/g,
   formato: '($1) $2 $3-$4',
   digitos: 11,
 };
